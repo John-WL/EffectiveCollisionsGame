@@ -1,6 +1,4 @@
-import java.util.function.Consumer;
-
-final class CollisionHandler
+public final class CollisionHandler
 {
     private final Collection<CollisionArea> collisionAreas;
     private final Consumer<Particle> collisionEventConsumer;
@@ -27,9 +25,9 @@ final class CollisionHandler
 
         for(final Collision collision: collisions)
         {
-            collision.updateParticlesProperties(); //<>//
+            collision.updateParticlesProperties(); //<>// //<>//
             collision.addParticlesTo(this.collisionEventConsumer);
-        } //<>//
+        } //<>// //<>//
     }
     
     public void showCollisionAreas()

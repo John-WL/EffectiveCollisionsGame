@@ -1,9 +1,9 @@
-final class CollisionArea
+public final class CollisionArea
 {
     private final Shape collisionShape;
     private final Set<Particle> particles;
 
-    CollisionArea(final Set<Particle> particles, final Shape collisionShape)
+    public CollisionArea(final Set<Particle> particles, final Shape collisionShape)
     {
         this.collisionShape = collisionShape;
         this.particles = particles;

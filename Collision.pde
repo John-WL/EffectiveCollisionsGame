@@ -1,9 +1,9 @@
-final class Collision
+public final class Collision
 {
-    final Particle firstParticle;
-    final Particle secondParticle;
+    private final Particle firstParticle;
+    private final Particle secondParticle;
 
-    Collision(final Particle firstParticle, final Particle secondParticle)
+    public Collision(final Particle firstParticle, final Particle secondParticle)
     {
         this.firstParticle = firstParticle;
         this.secondParticle = secondParticle;
