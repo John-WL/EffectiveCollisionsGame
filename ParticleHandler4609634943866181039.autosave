@@ -1,3 +1,6 @@
+import java.util.Set;
+import java.util.HashSet;
+
 final class ParticleHandler
 {
     private final Set<Particle> particles;
@@ -18,10 +21,10 @@ final class ParticleHandler
         {
             if(particle.hasFinishedToActualize())
             {
-                this.particles.remove(particle); //<>//
+                this.particles.remove(particle);
             }
             else
-            { //<>//
+            {
                 particle.actualize();
             }
         }

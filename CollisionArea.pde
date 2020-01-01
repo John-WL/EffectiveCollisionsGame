@@ -1,6 +1,3 @@
-import java.util.Set;
-import java.util.function.Consumer;
-
 final class CollisionArea
 {
     private final Circle area;

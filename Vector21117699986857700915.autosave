@@ -1,7 +1,7 @@
-final class Vector2
+public class Vector2
 {
-  private float x;
-  private float y;
+  private final float x;
+  private final float y;
   
   public Vector2()
   {
@@ -34,7 +34,7 @@ final class Vector2
   {
     final float newX = this.x * factor.x - this.y * factor.y;
     final float newY = this.x * factor.y + factor.x * this.y;
-    return new Vector2(newX, newY); //<>// //<>//
+    return new Vector2(newX, newY);
   }
   
   public Vector2 complexDiv(Vector2 divisor)
@@ -87,15 +87,5 @@ final class Vector2
   public float getY()
   {
     return y;
-  }
-  
-  public void setX(float x)
-  {
-    this.x = x;
-  }
-  
-  public void setY(float y)
-  {
-    this.y = y;
   }
 }

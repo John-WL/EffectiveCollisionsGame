@@ -1,4 +1,4 @@
-public final class EffectiveCollisions extends ProcessingApplication
+final class EffectiveCollisions extends ProcessingApplication
 {
     private CollisionHandler collisionHandler;
     

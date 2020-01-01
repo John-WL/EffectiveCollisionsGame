@@ -1,4 +1,4 @@
-public class Circle
+final class Circle
 {
     private final Vector2 center;
     private final float radius;
