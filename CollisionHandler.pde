@@ -1,12 +1,14 @@
+import java.util.function.Consumer;
+
 final class CollisionHandler
 {
-    final Collection<CollisionArea> collisionAreas;
-    final ParticleHandler particleHandler;
+    private final Collection<CollisionArea> collisionAreas;
+    private final Consumer<Particle> collisionEventConsumer;
 
-    public CollisionHandler(final Collection<CollisionArea> collisionAreas, final ParticleHandler particleHandler)
+    public CollisionHandler(final Collection<CollisionArea> collisionAreas, final Consumer<Particle> collisionEventConsumer)
     {
         this.collisionAreas = collisionAreas;
-        this.particleHandler = particleHandler;
+        this.collisionEventConsumer = collisionEventConsumer;
     }
 
     public void updateCollisionAreas()
@@ -14,7 +16,7 @@ final class CollisionHandler
         
     }
 
-    public void actualizeParticles()
+    public void collideParticles()
     {
         final Collection<Collision> collisions = new ArrayList<Collision>();
 
@@ -26,17 +28,15 @@ final class CollisionHandler
         for(final Collision collision: collisions)
         {
             collision.updateParticlesProperties(); //<>//
-            collision.addParticlesTo(this.particleHandler);
+            collision.addParticlesTo(this.collisionEventConsumer);
         } //<>//
-        
-        particleHandler.actualizeParticles();
     }
     
-    public void printCollisionAreas()
+    public void showCollisionAreas()
     {
         for(final CollisionArea area: this.collisionAreas)
         {
-            area.print();
+            area.show();
         }
     }
 }

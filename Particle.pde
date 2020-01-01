@@ -57,7 +57,7 @@ final class Particle
         return position.sub(that.position).normSquared() < RADIUS * RADIUS;
     }
     
-    public void print()
+    public void show()
     {
         ellipse(this.position.getX(), this.position.getY(), RADIUS, RADIUS);
     }

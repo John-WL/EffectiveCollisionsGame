@@ -1,8 +1,8 @@
-final class Vector2
+public final class Vector2
 {
   private float x;
   private float y;
-  
+
   public Vector2()
   {
     x = 0;
@@ -27,14 +27,14 @@ final class Vector2
   
   public float norm()
   {
-    return sqrt(normSquared());
+    return (float) Math.sqrt(normSquared());
   }
   
   public Vector2 complexMul(Vector2 factor)
   {
     final float newX = this.x * factor.x - this.y * factor.y;
     final float newY = this.x * factor.y + factor.x * this.y;
-    return new Vector2(newX, newY); //<>// //<>//
+    return new Vector2(newX, newY);
   }
   
   public Vector2 complexDiv(Vector2 divisor)

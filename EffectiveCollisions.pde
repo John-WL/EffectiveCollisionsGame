@@ -1,7 +1,8 @@
 final class EffectiveCollisions extends ProcessingApplication
 {
-    private CollisionHandler collisionHandler;
-    
+    private final CollisionHandler collisionHandler;
+    private final ParticleHandler particleHandler;
+
     public EffectiveCollisions()
     {
         final ParticleHandler particleHandler = new ParticleHandler();
@@ -19,21 +20,23 @@ final class EffectiveCollisions extends ProcessingApplication
                 particles.add(particle);
                 particleHandler.addParticle(particle);
             }
-            final Circle visualArea = new Circle(new Vector2(width/2, height/2), 300);
+            final Circle visualArea = new Circle(new CircleData(new Vector2(width/2, height/2), 300));
             areas.add(new CollisionArea(particles, visualArea));
         }
-        this.collisionHandler = new CollisionHandler(areas, particleHandler);
+        this.particleHandler = particleHandler;
+        this.collisionHandler = new CollisionHandler(areas, particleHandler.onParticleCollision);
     }
 
     public void backend()
     {
-        collisionHandler.updateCollisionAreas();
-        collisionHandler.actualizeParticles();
+        this.collisionHandler.updateCollisionAreas();
+        this.collisionHandler.collideParticles();
+        this.particleHandler.actualizeParticles();
     }
     
     public void frontend()
     {
         background(0);
-        collisionHandler.printCollisionAreas();
+        collisionHandler.showCollisionAreas();
     }
 }
