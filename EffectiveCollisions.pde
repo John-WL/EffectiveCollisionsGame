@@ -24,7 +24,7 @@ public final class EffectiveCollisions extends ProcessingApplication
             areas.add(new CollisionArea(particles, visualArea));
         }
         this.particleHandler = particleHandler;
-        this.collisionHandler = new CollisionHandler(areas, particleHandler.onParticleCollision);
+        this.collisionHandler = new CollisionHandler(areas, particleHandler.collidingParticleConsumer);
     }
 
     public void backend()

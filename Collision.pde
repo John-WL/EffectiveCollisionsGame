@@ -14,9 +14,9 @@ public final class Collision
         this.firstParticle.updatePropertiesOfThisAnd(this.secondParticle);
     }
 
-    public void addParticlesTo(final Consumer<Particle> collisionEventConsumer)
+    public void addParticlesTo(final Consumer<Particle> collidingParticleConsumer)
     {
-        collisionEventConsumer.accept(this.firstParticle);
-        collisionEventConsumer.accept(this.secondParticle);
+        collidingParticleConsumer.accept(this.firstParticle);
+        collidingParticleConsumer.accept(this.secondParticle);
     }
 }

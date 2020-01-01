@@ -1,12 +1,12 @@
 public final class CollisionHandler
 {
     private final Collection<CollisionArea> collisionAreas;
-    private final Consumer<Particle> collisionEventConsumer;
+    private final Consumer<Particle> collidingParticleConsumer;
 
-    public CollisionHandler(final Collection<CollisionArea> collisionAreas, final Consumer<Particle> collisionEventConsumer)
+    public CollisionHandler(final Collection<CollisionArea> collisionAreas, final Consumer<Particle> collidingParticleConsumer)
     {
         this.collisionAreas = collisionAreas;
-        this.collisionEventConsumer = collisionEventConsumer;
+        this.collidingParticleConsumer = collidingParticleConsumer;
     }
 
     public void updateCollisionAreas()
@@ -25,9 +25,9 @@ public final class CollisionHandler
 
         for(final Collision collision: collisions)
         {
-            collision.updateParticlesProperties(); //<>// //<>//
-            collision.addParticlesTo(this.collisionEventConsumer);
-        } //<>// //<>//
+            collision.updateParticlesProperties(); //<>//
+            collision.addParticlesTo(this.collidingParticleConsumer);
+        } //<>//
     }
     
     public void showCollisionAreas()

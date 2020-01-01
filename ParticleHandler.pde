@@ -27,7 +27,7 @@ public final class ParticleHandler
         }
     }
 
-    public final Consumer<Particle> onParticleCollision = new Consumer<Particle>()
+    public final Consumer<Particle> collidingParticleConsumer = new Consumer<Particle>()
     {
         @Override
         public void accept(final Particle particle)
