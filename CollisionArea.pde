@@ -1,11 +1,11 @@
-final class CollisionArea
+public final class CollisionArea
 {
-    private final Circle area;
+    private final Shape collisionShape;
     private final Set<Particle> particles;
 
-    CollisionArea(final Set<Particle> particles, final Circle area)
+    public CollisionArea(final Set<Particle> particles, final Shape collisionShape)
     {
-        this.area = area;
+        this.collisionShape = collisionShape;
         this.particles = particles;
     }
 
@@ -27,26 +27,35 @@ final class CollisionArea
         return collisions;
     }
 
-    public void print()
+    public void show()
     {
-        this.setupAreaPrint();
-        this.area.print();
-
-        this.setupParticlePrint();
-        for(final Particle particle: this.particles)
-        {
-            particle.print();
-        }
+        this.showShape();
+        this.showParticles();
     }
 
-    private void setupAreaPrint()
+    private void showShape()
+    {
+        this.setupShowShape();
+        this.collisionShape.show();
+    }
+
+    private void setupShowShape()
     {
         color trensparentGrey = color(80, 80, 80, 60);
         fill(trensparentGrey);
         noStroke();
     }
 
-    private void setupParticlePrint()
+    private void showParticles()
+    {
+        this.setupShowParticles();
+        for(final Particle particle: this.particles)
+        {
+            particle.show();
+        }
+    }
+
+    private void setupShowParticles()
     {
         color trensparentGrey = color(40, 40, 128);
         fill(trensparentGrey);

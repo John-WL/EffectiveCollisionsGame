@@ -1,4 +1,4 @@
-final class Particle
+public final class Particle
 {
     public static final int RADIUS = 50;
     
@@ -22,7 +22,7 @@ final class Particle
         that.speed = temporarySpeed;
     }
     
-    boolean hasFinishedToActualize()
+    public boolean hasFinishedToActualize()
     {
         return speed.normSquared() < 0.001;
     }
@@ -57,7 +57,7 @@ final class Particle
         return position.sub(that.position).normSquared() < RADIUS * RADIUS;
     }
     
-    public void print()
+    public void show()
     {
         ellipse(this.position.getX(), this.position.getY(), RADIUS, RADIUS);
     }

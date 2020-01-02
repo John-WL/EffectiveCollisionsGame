@@ -1,4 +1,4 @@
-final class ParticleHandler
+public final class ParticleHandler
 {
     private final Set<Particle> particles;
 
@@ -7,12 +7,12 @@ final class ParticleHandler
         this.particles = new HashSet<Particle>();
     }
 
-    void addParticle(final Particle particle)
+    public void addParticle(final Particle particle)
     {
         this.particles.add(particle);
     }
     
-    void actualizeParticles()
+    public void actualizeParticles()
     {
         for(final Particle particle: new ArrayList<Particle>(this.particles))
         {
@@ -26,4 +26,13 @@ final class ParticleHandler
             }
         }
     }
+
+    public final Consumer<Particle> collidingParticleConsumer = new Consumer<Particle>()
+    {
+        @Override
+        public void accept(final Particle particle)
+        {
+            ParticleHandler.this.addParticle(particle);
+        }
+    };
 }

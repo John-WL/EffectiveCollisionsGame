@@ -1,12 +1,12 @@
-final class CollisionHandler
+public final class CollisionHandler
 {
-    final Collection<CollisionArea> collisionAreas;
-    final ParticleHandler particleHandler;
+    private final Collection<CollisionArea> collisionAreas;
+    private final Consumer<Particle> collidingParticleConsumer;
 
-    public CollisionHandler(final Collection<CollisionArea> collisionAreas, final ParticleHandler particleHandler)
+    public CollisionHandler(final Collection<CollisionArea> collisionAreas, final Consumer<Particle> collidingParticleConsumer)
     {
         this.collisionAreas = collisionAreas;
-        this.particleHandler = particleHandler;
+        this.collidingParticleConsumer = collidingParticleConsumer;
     }
 
     public void updateCollisionAreas()
@@ -14,7 +14,7 @@ final class CollisionHandler
         
     }
 
-    public void actualizeParticles()
+    public void collideParticles()
     {
         final Collection<Collision> collisions = new ArrayList<Collision>();
 
@@ -26,17 +26,15 @@ final class CollisionHandler
         for(final Collision collision: collisions)
         {
             collision.updateParticlesProperties(); //<>//
-            collision.addParticlesTo(this.particleHandler);
+            collision.addParticlesTo(this.collidingParticleConsumer);
         } //<>//
-        
-        particleHandler.actualizeParticles();
     }
     
-    public void printCollisionAreas()
+    public void showCollisionAreas()
     {
         for(final CollisionArea area: this.collisionAreas)
         {
-            area.print();
+            area.show();
         }
     }
 }

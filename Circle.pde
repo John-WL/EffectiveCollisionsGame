@@ -1,16 +1,35 @@
-final class Circle
+public final class Circle extends CircleShape
 {
-    private final Vector2 center;
-    private final float radius;
-  
-    public Circle(Vector2 center, float radius)
+    public Circle(final CircleData data)
+    {
+        super(data);
+    }
+}
+
+public final class CircleData
+{
+    public final Vector2 center;
+    public final float radius;
+
+    public CircleData(Vector2 center, float radius)
     {
         this.center = center;
         this.radius = radius;
     }
-    
-    public void print()
+}
+
+private class CircleShape implements Shape
+{
+    private final CircleData data;
+
+    public CircleShape(final CircleData data)
     {
-        ellipse(center.getX(), center.getY(), radius, radius);
+        this.data = data;
+    }
+
+    @Override
+    public final void show()
+    {
+        ellipse(this.data.center.getX(), this.data.center.getY(), this.data.radius, this.data.radius);
     }
 }

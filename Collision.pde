@@ -1,9 +1,9 @@
-final class Collision
+public final class Collision
 {
-    final Particle firstParticle;
-    final Particle secondParticle;
+    private final Particle firstParticle;
+    private final Particle secondParticle;
 
-    Collision(final Particle firstParticle, final Particle secondParticle)
+    public Collision(final Particle firstParticle, final Particle secondParticle)
     {
         this.firstParticle = firstParticle;
         this.secondParticle = secondParticle;
@@ -14,9 +14,9 @@ final class Collision
         this.firstParticle.updatePropertiesOfThisAnd(this.secondParticle);
     }
 
-    public void addParticlesTo(final ParticleHandler particleHandler)
+    public void addParticlesTo(final Consumer<Particle> collidingParticleConsumer)
     {
-        particleHandler.addParticle(this.firstParticle);
-        particleHandler.addParticle(this.secondParticle);
+        collidingParticleConsumer.accept(this.firstParticle);
+        collidingParticleConsumer.accept(this.secondParticle);
     }
 }
